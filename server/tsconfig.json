@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "Build",
+    "baseUrl": ".",
+    "paths": {
+       "@Validations/*"   : ["./Validations/*"],
+       "@API/*"           : ["./Api/*"],
+       "@Entities/*"      : ["./Models/Entities/*"],
+       "@Categories/*"    : ["./Models/Categories/*"],
+       "@Settings/*"      : ["./Models/Settings/*"],
+       "@Interfaces/*"    : ["./Interfaces/*"],
+       "@Functions/*"     : ["./Functions/*"],
+       "@Dev/*"           : ["./Dev/*"],
+       "@Database/*"      : ["./Database/*"],
+       "@JsonModels/*"    : ["Database/JsonModels/*"],
+       "@DbModels/*"      : ["./Database/DbModels/*"],
+       "@MiddleWares/*"   : ["./MiddleWares/*"],
+       "@Root/*"          : ["./*"],
+       "@AllTypesTable"   : ["./Database/DbModels/AllTypesTable"],
+       "@Tests/*"          : ["./Tests/*"],
+       "@GSettings/*"     : ["./Settings/*"] 
+    }
+  },
+  "include":  ["**/*.ts"]
+}

@@ -1,0 +1,3 @@
+interface IFlags{
+    isLogin : boolean
+}
