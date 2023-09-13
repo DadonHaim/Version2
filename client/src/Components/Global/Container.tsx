@@ -1,8 +1,4 @@
-import React,{memo} from "react";
-import GlobalStyle from "./GlobalStyle";
-
-
-
+import { GlobalStyle, memo ,React } from "../../importAll"
 
 const styleObj = (props:IContainerProps) :React.CSSProperties=>({
     display              : (props.Grid)? "grid" : (props.Flex)?"flex":"block",

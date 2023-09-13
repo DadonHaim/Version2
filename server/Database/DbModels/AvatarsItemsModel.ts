@@ -1,4 +1,4 @@
-class AvatarsItemsModel{
+export default class AvatarsItemsModel{
     public id?              :number;
     public active?          :boolean;
     public rank?            :number;

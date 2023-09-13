@@ -1,29 +1,28 @@
-import { DebugSocket } from "@Dev/Debug";
-import User from "@Entities/User/User";
-import SocketVer2 from "./Socket";
+import { SocketVer2, User, UserModel } from "./../importAll";
 
-export function LoginSocket(socket:SocketVer2 , user:User){
+
+export default function LoginSocket(socket:SocketVer2 , user:User){
  
     //Token 
-    socket.On("client-I-Have-Token",(token)=>{
+    socket.On<client,string>("Start-With-Token",(token)=>{
         user = User.GetUserByToken(token); 
         if(user.IsLogin())
-            socket.Emit("server-Token-Valid" , user.SendToClinet())
+            socket.Emit<UserModel>("Start-Token-Valid" , user.SendToClinet())
         else
-            socket.Emit("server-Token-No-Valid")
+            socket.Emit("Start-Token-No-Valid")
     })  
 
 
     //LoginForm 
-    socket.On("client-I-Want-Login",(data)=>{
+    socket.On<client,ILogin>("Login-Me",(data)=>{
         if(user.IsLogin()) 
-            socket.Emit("server-You-Are-Already-Login");
+            socket.Emit("Login-You-Are-Already");
         else{ 
             user.Login(data); 
             if(user.IsLogin()) 
-                socket.Emit("server-I-Login-You",user.SendToClinet())
+                socket.Emit<UserModel>("Login-You",user.SendToClinet())
             else 
-                socket.Emit("server-Login-No-Valid",user.message)
+                socket.Emit<ILoginMsgs>("Login-No-Valid",user.message.login)
         }
     })
 

@@ -5,8 +5,8 @@ require('module-alias/register')
 Test.DeleteTestDB();
 Test.CreateTestDB();
 
-require("@Tests/RegisterTest")
-require("@Tests/ILoginTest")
+require("./RegisterTest")
+require("./ILoginTest")
 
 Test.DeleteTestDB();
 

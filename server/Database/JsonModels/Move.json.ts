@@ -6,10 +6,3 @@ export default class Move{
     constructor(jsonText:string){}
 
 }
-
-// {
-//     "up"    : 0,
-//     "down"  : 0,
-//     "left"  : 0,
-//     "right" : 0
-// }

@@ -1,4 +1,4 @@
-import { DebugSocket } from "@Dev/Debug";
+import { DebugSocket } from "./../importAll";
 
 export default class SocketVer2{
     public socket;
@@ -7,14 +7,14 @@ export default class SocketVer2{
         this.socket = socket
     }
 
-    public On<T=any>(id:string ,call?:(data?:T)=>void){
+    public On<T=any,R=any>(id:T ,call?:(data?:R)=>void){
         this.socket.on(id,(data)=>{
             DebugSocket(id)
             call(data);
         }) 
     }
 
-    public Emit<T=any>(id:string , data?:T){
+    public Emit<R=any>(id:server , data?:R){
         DebugSocket(id)
         this.socket.emit(id,data)
     }

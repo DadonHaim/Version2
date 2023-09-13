@@ -1,7 +1,7 @@
-import Debug     from "../Dev/Debug";
+import { Debug, ResultSql } from "./../importAll";
 import sql       from "msnodesqlv8";
 import sync      from "synchronized-promise";
-import ResultSql from "./ResultSql";
+
 
 export default  class Database<Model=any>{
     protected tableName :listAllTableType = "none";
@@ -13,7 +13,7 @@ export default  class Database<Model=any>{
         if(obj)
             this.tableName = obj.tableName;
     }
-
+ 
     public Query(query:string){
         Debug(query)
         return new Promise((T,F)=>{

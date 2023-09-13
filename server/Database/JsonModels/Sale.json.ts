@@ -1,4 +1,4 @@
-export default class sale{
+export default class Sale{
     public leven1 :Moneys;
     public leven2 :Moneys;
     public leven3 :Moneys;
@@ -17,24 +17,3 @@ class Moneys{
     public redPowder  :number;  
 }
 
-
-
-
-
-
-
-// {
-//     "leven_1":{
-//         "silver"    : 0,
-//         "gold"      : 0,
-//         "redPowder" : 0,
-//         "diamond"   : 0
-//     },
-//    ...
-//     "leven_6":{
-//         "silver"    : 0,
-//         "gold"      : 0,
-//         "redPowder" : 0,
-//         "diamond"   : 0
-//     }
-// }

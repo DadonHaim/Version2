@@ -1,6 +1,6 @@
-import User from "@Entities/User/User";
-import { IRegisterTest } from "@GSettings/IRegisterSettings";
+import { User } from "./../importAll";
 import Test, { NoValid, Valid } from "./Test";
+import { IRegisterTest } from "Validations/Settings/RegisterSettings";
 let user:User;
 
 let T1 = new Test({

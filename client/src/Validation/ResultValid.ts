@@ -1,5 +1,5 @@
 export default class ResultValid<T=any>{
-    public messages : T;
+    public messages : any;
     public valid:boolean;
 
     public constructor(messages:T , isValid:boolean){
@@ -12,7 +12,7 @@ export default class ResultValid<T=any>{
             callback(this.messages);
         return this;
     }
-    public NoValid(callback:(msg:T)=>void):ResultValid{
+    public NoValid<R=any>(callback:(msg:R)=>void):ResultValid{
         if(!this.valid)
             callback(this.messages);
         return this;

@@ -1,4 +1,4 @@
-class AvatarsLabyrinthsModel{
+export default class AvatarsLabyrinthsModel{
     public id?              :number;
     public labyrinthData?   :string;
     public activeMissionID? :number;

@@ -13,27 +13,3 @@ class _monsterRankPower{
     public refillEnergy :number;
 }
 
-
-
-// {
-//     "addPerRank":{
-//         "hp"           : 0,
-//         "energy"       : 0,
-//         "refillEnergy" : 0
-//     },
-//     "simple":{
-//         "hp"           : 0,
-//         "energy"       : 0,
-//         "refillEnergy" : 0
-//     },
-//     "general" :{
-//         "hp"           : 0,
-//         "energy"       : 0,
-//         "refillEnergy" : 0
-//     },
-//     "king":{
-//         "hp"           : 0,
-//         "energy"       : 0,
-//         "refillEnergy" : 0
-//     }
-// }

@@ -1,21 +1,22 @@
-import  {configureStore} from "@reduxjs/toolkit";
-import pageSlice from "./Page";
-import flagSlice from "./Flags";
-import userSlice from "./User";
+import {configureStore} from "@reduxjs/toolkit";
+import {createSlice   } from "@reduxjs/toolkit";
+import reducers         from "./redusers";
+
+const initialState :IStore = {
+    isLogin  : false,
+    user     : {},
+    mainPage : "Guest",
+    subPage  : "Guest-Home"
+}
 
 
-const myStore = configureStore({
-    reducer:{
-        page : pageSlice.reducer,
-        flag : flagSlice.reducer,
-        user : userSlice.reducer,
-    },
-})
+const states  = createSlice({name:"store",initialState,reducers})
+const myStore = configureStore({reducer:states.reducer});
+const actions = states.actions;
+
+export {actions};
+export default myStore;
 
 
-export const PageAction = pageSlice.actions
-export const flagAction = flagSlice.actions
-export const userAction = userSlice.actions
 
-export default myStore
 

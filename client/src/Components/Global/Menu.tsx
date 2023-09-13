@@ -1,18 +1,15 @@
-import { Flex } from "./Container";
-import React, {memo} from "react"
-import {useDispatch,useSelector} from "react-redux";
-import { PageAction } from "../../Store/Store";
-import ConvertPoint from "../../Functions/ConvertPoint";
-
+// import { actions } from "../../Store/Store";
+import { ConvertPoint, Flex, memo,useDispatch, useStore } from "../../importAll";
+const defaultStyle={backgroundColor:"yellow"}
 const Menu = memo((props:IMenuProps)=> <Flex XYcenter {...props}> {props.children}</Flex>)
 
 
 const Choice = memo((props:IChiceProps)=>{
-    let dispath = useDispatch();
+    let {dispatch ,actions} = useStore()
 
-    let selectedStyle = props.selected? {
-        backgroundColor:"yellow"
-    }: (props.onSelected)? props.onSelected: {}; 
+    let selectedStyle = (props.selected)? defaultStyle : (props.onSelected)? props.onSelected: {}; ;
+  
+
 
     const styleButton :React.CSSProperties={
         display:"inline-flex",
@@ -28,8 +25,8 @@ const Choice = memo((props:IChiceProps)=>{
     }
 
     const onclick = ()=>{
-        if(props.toPage)    dispath(PageAction.set({type:"thePage",newValue:props.toPage}))
-        if(props.toSubPage) dispath(PageAction.set({type:"subPage",newValue:props.toSubPage}))
+        if(props.toPage)    dispatch(actions.setMainPage(props.toPage) );
+        if(props.toSubPage) dispatch(actions.setSubPage(props.toSubPage)  );
     }
 
     return <div style={styleButton} onClick={onclick}> {props.value}</div>
@@ -44,11 +41,10 @@ interface IMenuProps extends IGlobalProps{
 interface IChiceProps extends IGlobalProps{
     onSelected?:React.CSSProperties;
     selected? : boolean;
-    toPage?:AllPage;
+    toPage?:AllMainPages;
     toSubPage?:AllSubPage;
     value?:string;
 }
-
 
 export{
     Menu,

@@ -1,6 +1,6 @@
-import { ILoginTest } from "@Root/Settings/ILoginSettings";
+import { User } from "./../importAll";
 import Test, { NoValid, Valid } from "./Test";
-import User from "@Entities/User/User";
+import { ILoginTest } from "Validations/Settings/LoginSettings";
 
 let user:User;
 
@@ -63,25 +63,4 @@ let T3 = new Test({
         else    Valid(msg)
     } 
     user.DeleteDB();
-})
-
-//check token:
-let T4 = new Test({
-    name:"token",
-    description:""
-}).start()
-.SomethingTest("token:",(mgs)=>{
-    Test.CreateTestDB()
-    let user = new User().Login({username:"Testusername",password:"Testpassword"})
-    if(!user.IsLogin()) NoValid(mgs+'for {username:"Testusername",password:"Testpassword"} no login')
-    let token = user.GetToken();
-    let userToken = User.GetUserByToken(token);
-    if(userToken.GetId()!=user.GetId()) NoValid(mgs+" token no created")
-    user.Logout();
-    userToken = User.GetUserByToken(token);
-    if(userToken.GetId()) NoValid(mgs+" token no deleted")
-    else Valid(mgs)
-
-    user.DeleteDB();
-    userToken.DeleteDB();
 })

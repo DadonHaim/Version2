@@ -1,18 +1,18 @@
-export default class ResultValid{
-    public messages :string[];
+export default class ResultValid<R=any>{
+    public messages: any |any[];
     public valid:boolean;
 
-    public constructor(messages , isValid){
+    public constructor(messages :R , isValid){
         this.valid = isValid;
         this.messages = messages;
     }
 
-    public Valid(callback:(data:any)=>void):ResultValid{
+    public Valid<T=any>(callback:(data:T)=>void):ResultValid{
         if(this.valid)
             callback(this.messages);
         return this;
     }
-    public NoValid(callback:(data:any)=>void):ResultValid{
+    public NoValid<T=any>(callback:(data:T)=>void):ResultValid{
         if(!this.valid)
             callback(this.messages);
         return this;

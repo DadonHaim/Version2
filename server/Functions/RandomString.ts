@@ -1,4 +1,4 @@
-export default function randomString(num:number){
+export default function RandomString(num:number){
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;

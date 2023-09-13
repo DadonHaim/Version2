@@ -1,12 +1,6 @@
-import React from "react"
-import ConvertPoint from "../../Functions/ConvertPoint";
-import {useDispatch} from "react-redux";
-import { PageAction } from "../../Store/Store";
+import { ConvertPoint } from "../../importAll";
 
 export default function Button(props:IButtonProps){
-    let dispath = useDispatch();
-
-
     const styleButton :React.CSSProperties={
         display:"inline-flex",
         border :"1px solid",
@@ -22,10 +16,10 @@ export default function Button(props:IButtonProps){
 
  
     const GoPage = ()=>{
-        if(props.toPage)
-            dispath(PageAction.set({type:"thePage",newValue:props.toSubPage}))
-        if(props.toSubPage)
-            dispath(PageAction.set({type:"subPage",newValue:props.toSubPage}))       
+        // if(props.toPage)
+        //     // dispath(PageAction.set({type:"thePage",newValue:props.toSubPage}))
+        // if(props.toSubPage)
+            // dispath(PageAction.set({type:"subPage",newValue:props.toSubPage}))       
     }
     
     return(

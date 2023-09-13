@@ -1,5 +1,5 @@
-import UserModel from '@Database/DbModels/UserModel';
-import Database from '../Database/Connection';
+import { Database, UserModel } from "./../importAll";
+
 var colors = require('colors/safe');
 
 interface ITest{

@@ -1,4 +1,4 @@
-import ConvertPoint from "../../Functions/ConvertPoint";
+import { ConvertPoint } from "../../importAll";
 
 export default function Copyright(props:ICopyrightProps){
     let style :React.CSSProperties={

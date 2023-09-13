@@ -1,36 +1,41 @@
-import Guest from "./Components/Guest/Guest";
 import "./Components/Global/GlobalStyle.css"
-import {useDispatch, useSelector} from "react-redux";
-import { useSocket } from "./Socket";
-import { useEffect } from "react";
-import User from "./Models/User";
-import { PageAction, flagAction, userAction } from "./Store/Store";
+import {
+    // useSocket,
+    useStore,
+    useEffect,
+    useSelector,
+    Guest,
+    memo,
+    User,
+    socket,
+} from "./importAll"
 
+const App = memo( ()=>{
+   
+    let {actions,dispatch}  = useStore()
+    let mainPage            = useSelector<any,any>(store=>store.mainPage)
+  
 
-export default function App(){
-    let socket   = useSocket()
-    let dispatch = useDispatch()
-
-    let thePage = useSelector((store:any)=>store.page.thePage)
-    useEffect(()=>{
+     useEffect(()=>{
         let token = sessionStorage.getItem("token");
         if(token)
-            socket.emit("client-I-Have-Token",token)
-        socket.on("server-Token-Valid",(user:User)=>{
-            dispatch(userAction.set({type:"user",newValue:user}))
-            dispatch(flagAction.set({type:"isLogin",newValue:true}))
-            dispatch(PageAction.set({type:"thePage",newValue:"Game"}))
+            socket.emit<string>("Start-With-Token",token)
+        socket.on<server,User>("Start-Token-Valid",(user)=>{
+          dispatch(actions.setIsLogin(true));
+          dispatch(actions.setUser(user));
         })
-    })
-    if(thePage == "Guest")
-        return <Guest/>
+      })
 
-    else if (thePage == "Game")
+
+
+    if(mainPage == "Guest") return  <Guest/>
+
+    else if (mainPage == "Game")
         return <>
             <button onClick={
                 ()=>{
-                    dispatch(flagAction.set({type:"isLogin",newValue:false}))
-                    dispatch(PageAction.set({type:"thePage",newValue:"Guest"}))
+                   dispatch(actions.setIsLogin(false))
+                   dispatch(actions.setMainPage("Guest"))
                     User.KillToken()  
                 }
             }>התנתק</button>
@@ -38,4 +43,6 @@ export default function App(){
     
     
     return <></>
-} 
+} )
+
+export default App

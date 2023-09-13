@@ -1,4 +1,4 @@
-import ConvertPoint from "../../Functions/ConvertPoint";
+import { ConvertPoint } from "../../importAll";
 
 let colorCounter = 0
 let bgcounter = 0
